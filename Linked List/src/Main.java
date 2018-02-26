@@ -15,6 +15,11 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        NewJFrame Fr = new NewJFrame();
+        
+        Fr.setVisible(true);
+        
+        Fr.setResizable(true);
     }
     
 }

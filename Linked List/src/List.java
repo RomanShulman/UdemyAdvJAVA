@@ -35,10 +35,10 @@ public class List<T>
     {
         if (isEmpty())
         {
-            firstNode = lastNode = new Node<T> (insertItem);
+            firstNode = lastNode = new Node<T>(insertItem);
         }
         else
-            firstNode = lastNode = new Node<T> (insertItem, firstNode);
+            firstNode = new Node<T>(insertItem, firstNode);
     }
     public void insertAtBack(T insertItem)
     {
@@ -58,20 +58,20 @@ public class List<T>
         
         if (isEmpty())
         {
-            str = "Empty" + name;
+            str = "Empty " + name;
         }
         else
         {
-            str = "The" + name + "is : \n \n";
+            str = "The " + name + "is : \n \n";
         }
         Node<T> current = firstNode;
         
         while (current != null)
         {
-            str = str + "\n";
+            str = str + current.getData() + "\n";
             current = current.getNextNode();
         }
-        str = str + "\n" + "End" + name + "\n";       
+        str = str + "\n" + "End " + name + "\n";       
         
         return str;
     }
@@ -82,12 +82,14 @@ public class List<T>
     }
     public T removeFromFront() throws EmptyListException
     {
-        if (isEmpty())
+        if (isEmpty())//no nodes
             throw new EmptyListException(name);
-        T removedItem = firstNode.getData();
-        if (firstNode == lastNode)
+        
+        T removedItem = firstNode.getData();//"lost" node
+        
+        if (firstNode == lastNode)//only 1 node
             firstNode = lastNode = null;
-        else
+        else//pointer to first node is moved to next node
             firstNode = firstNode.getNextNode();
         
         return removedItem;
@@ -95,18 +97,20 @@ public class List<T>
     
     public T removeFromBack() throws EmptyListException
     {
-        if (isEmpty())
+        if (isEmpty())//no nodes
             throw new EmptyListException(name);
-        T removedItem = firstNode.getData();
-        if (firstNode == lastNode)
+        
+        T removedItem = lastNode.getData();//"lost" node
+        
+        if (firstNode == lastNode)//only 1 node
             firstNode = lastNode = null;
         else
         {
             Node<T> current = firstNode;
             while (current.getNextNode() != lastNode)
-            {
-                current = current.getNextNode();
-            }
+        {
+            current = current.getNextNode();
+        }
             lastNode = current;
             current.setNextNode(null);
         }
