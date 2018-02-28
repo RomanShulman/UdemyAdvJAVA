@@ -18,6 +18,7 @@ public class Main {
         NewJFrame obj = new NewJFrame();
         
         obj.setVisible(true);
+        obj.setLocation(700, 350);
         obj.setSize(560, 350);
         obj.setResizable(false);
     }

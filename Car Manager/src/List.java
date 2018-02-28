@@ -68,7 +68,7 @@ public class List<T>
         
         while (current != null)
         {
-            str = str + current.getData() + "\n";
+            str = str + current.getData() + "\n\n";
             current = current.getNextNode();
         }
         str = str + "\n" + "End " + name + "\n";       
@@ -141,6 +141,49 @@ public class List<T>
         } 
         return removedItem;
     }
+    
+    public String searchBrand(String brand1)
+    {
+        String str = null;
+        if (isEmpty())                 
+            return "Empty " + name;
+        str = "The " + name + " is:\n\n";
+        Node<T> currNode = firstNode;
+        String word;
+        
+        while(currNode != null)
+        {
+            word = currNode.getData().toString();
+            String line1 = word.substring(0, word.indexOf("\n"));
+            String line2 = line1.substring(line1.lastIndexOf(":")+2);
+            
+            if (line2.equals(brand1))
+                str = str + currNode.getData() + "\n";
+            
+            currNode = currNode.getNextNode();
+        }
+        str = str + "\nEnd " + name + "\n";
+        return str;        
+    }
+    
+    public String numOfCars()            
+    {
+        int num =0;
+        String str = null;
+        
+        if (isEmpty())                 
+            return "Empty " + name;
+        str = "The lenght of " + name + " is : \n\n";
+        Node<T> currNode = firstNode;
                 
+        while(currNode != null)
+        {
+                   
+            num++;
+            currNode = currNode.getNextNode();
+        } 
+        str = str + num;
+        return str;
+    }
             
 }
