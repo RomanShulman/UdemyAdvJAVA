@@ -17,6 +17,8 @@ public class SortingAlgorithms {
     int[] arr2 = new int[50];
     int[] arr3 = new int[50];
     int[] arr4 = new int[50];
+    int[] arr5 = new int[50];
+    
 
     public SortingAlgorithms() 
     {
@@ -29,6 +31,7 @@ public class SortingAlgorithms {
             arr2[i] = n;
             arr3[i] = n;
             arr4[i] = n;
+            arr5[i] = n;
         }
     }
     
@@ -180,4 +183,60 @@ public class SortingAlgorithms {
         
         return str;        
     }
+    
+    void QuickSort(int arr[], int low, int high)
+    {
+        if (low < high)
+        {
+            int pi = partition(arr, low, high);
+            QuickSort(arr, low, pi-1);
+            QuickSort(arr, pi+1, high);            
+        }
+    }
+    int partition(int arr[], int low, int high)
+    {
+        int pivot = arr[high];
+        int i = low-1;
+        
+        for(int j = low; j<high; j++)
+        {
+            if (arr[j] <= pivot)
+            {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        int temp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+        
+        return i+1;        
+    }
+    
+        String printQuickSortArray()
+    {
+        String str = null;
+        for (int i = 0; i < arr5.length; i++)
+            str = str + arr5[i] + " ";
+        str = str + "\n";
+        
+        return str;        
+    }
+        
+        void newArrays()
+        {
+            Random rand = new Random();
+            for (int i=0; i<arr.length; i++)
+            {
+                int n = rand.nextInt(101);
+                arr[i] = n;
+                arr2[i] = n;
+                arr3[i] = n;
+                arr4[i] = n;
+                arr5[i] = n;
+            }
+        }
+    
 }
